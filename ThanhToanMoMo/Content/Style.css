@@ -1,0 +1,36 @@
+﻿.banner {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+.card-wrapper:hover {
+    transform: translateY(-5px); /* Hiệu ứng khi hover */
+}
+
+.card:hover {
+    border: 1px solid #007bff; /* Màu sắc của viền khi hover */
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Hiệu ứng đổ bóng khi hover */
+}
+.container.body-content {
+    margin-top: 0;
+}
+
+#banner-slideshow {
+    position: relative;
+    height: 300px; /* Đặt độ cao phù hợp với hình ảnh của bạn */
+    width: 100%;
+}
+
+#banner-slideshow img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+#banner-slideshow img:first-child {
+    display: block;
+}
