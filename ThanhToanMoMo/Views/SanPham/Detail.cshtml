@@ -1,0 +1,23 @@
+﻿@model ThanhToanMoMo.Models.SanPham
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="@Url.Content(Model.HinhAnh)" alt="@Model.Tensp" class="img-fluid" />
+        </div>
+        <div class="col-md-6">
+            <h2>@Model.Tensp</h2>
+            <hr />
+            <h4>Thông tin sản phẩm:</h4>
+            <ul class="list-unstyled">
+                <li><strong>Giá:</strong> @Model.Gia.ToString("N0")</li>
+            </ul>
+            <a href="@Url.Action("Index", "SanPham")" class="btn btn-primary mt-3">Back</a>
+        </div>
+    </div>
+</div>

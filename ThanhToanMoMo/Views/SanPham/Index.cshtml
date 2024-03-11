@@ -1,0 +1,93 @@
+﻿@model IEnumerable<ThanhToanMoMo.Models.SanPham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var firstSixProducts = Model.Take(6);
+    var lastFourProducts = Model.Skip(6);
+}
+<link href="~/Content/Style.css" rel="stylesheet" />
+<div id="banner-slideshow">
+    <img class="banner" src="@Url.Content("~/Content/images/Banner-bigTGDD-min-1920x450.png")" alt="Banner quảng cáo" />
+    <img class="banner" src="@Url.Content("~/Content/images/banner1.png")" alt="Banner quảng cáo" />
+    <img class="banner" src="@Url.Content("~/Content/images/banner2.png")" alt="Banner quảng cáo" />
+    <img class="banner" src="@Url.Content("~/Content/images/banner3.png")" alt="Banner quảng cáo" />
+    <img class="banner" src="@Url.Content("~/Content/images/banner4.png")" alt="Banner quảng cáo" />
+
+</div>
+<div class="row">
+    @foreach (var item in firstSixProducts)
+    {
+        <div class="col-md-4">
+            <div class="card-wrapper">
+                <div class="card">
+                    <img class="card-img-top" src="@Url.Content(item.HinhAnh)" alt="@item.Tensp" />
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Tensp)</h5>
+                        <p class="card-text">Giá: @item.Gia.ToString("N0")</p>
+                        <a href="@Url.Action("AddToCart", "Cart", new { id = item.id })" class="btn btn-primary">Mua ngay</a>
+                        <a href="@Url.Action("Detail", "SanPham", new { id = item.id })" class="btn btn-secondary">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="container mt-5">
+    <h2>ƯU ĐÃI KHI THANH TOÁN ONLINE</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <img src="@Url.Content("~/Content/images/uudai1.png")" class="img-fluid" alt="Ưu đãi 1" />
+        </div>
+        <div class="col-md-4">
+            <img src="@Url.Content("~/Content/images/uudai2.png")" class="img-fluid" alt="Ưu đãi 2" />
+        </div>
+        <div class="col-md-4">
+            <img src="@Url.Content("~/Content/images/uudai3.png")" class="img-fluid" alt="Ưu đãi 3" />
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <h2>Gợi ý hôm nay</h2>
+    <div class="row">
+        @foreach (var item in lastFourProducts)
+        {
+            <div class="col-md-3">
+                <div class="card-wrapper">
+                    <div class="card">
+                        <div style="background: url('@Url.Content("~/Content/images/khuyenmai.png")') no-repeat center / cover; width: 100%; height: 0; padding-top: 75%; position: relative;">
+                            <img style="position: absolute; top: 25%; left: 25%; width: 50%; height: 50%;" src="@Url.Content(item.HinhAnh)" alt="@item.Tensp" />
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.Tensp)</h5>
+                            <p class="card-text">Giá: @item.Gia.ToString("N0")</p>
+                            <a href="@Url.Action("AddToCart", "Cart", new { id = item.id })" class="btn btn-primary">Mua ngay</a>
+                            <a href="@Url.Action("Detail", "SanPham", new { id = item.id })" class="btn btn-secondary">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var currentBanner = 0;
+        var banners = $("#banner-slideshow img");
+
+        setInterval(function () {
+            banners.eq(currentBanner).fadeOut(1000);
+            currentBanner = (currentBanner + 1) % banners.length;
+            banners.eq(currentBanner).fadeIn(1000);
+        }, 5000); // Thay đổi banner sau mỗi 5 giây
+
+    });
+</script>
+
+
+

@@ -1,0 +1,59 @@
+﻿@using ThanhToanMoMo.Models;
+@model IEnumerable<CartItemDetail>
+
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Giỏ hàng</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Sản phẩm</th>
+                <th>Giá</th>
+                <th>Số lượng</th>
+                <th>Thành tiền</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int stt = 1;
+                decimal tongTien = 0;
+                MyDataDataContext Data = new MyDataDataContext();
+                var chiTietDonHang = Data.ChiTietGioHangs.ToList(); // Lấy tất cả các sản phẩm từ ChiTietGioHang
+            }
+            @foreach (var item in chiTietDonHang)
+            {
+                // Lấy thông tin giỏ hàng
+                var cart = Data.GioHangs.FirstOrDefault(g => g.MaGioHang == item.MaGioHang);
+                var cart2 = Data.SanPhams.FirstOrDefault(g => g.id == item.id);
+
+                if (cart != null && cart2 != null)
+                {
+                    <tr>
+                        <td>@stt</td>
+                        <td>@cart2.Tensp</td>
+                        <td>@cart2.Gia.ToString("N0")</td>
+                        <td>@cart.SoLuong</td>
+                        <td>@(cart.ThanhTien.ToString("N0"))</td>
+                        <td>
+                            <a href="@Url.Action("RemoveFromCart", "Cart", new { id = item.id })" class="btn btn-danger">Xóa</a>
+                        </td>
+                    </tr>
+                    stt++;
+                    tongTien += (decimal)cart.ThanhTien;
+                }
+            }
+
+        </tbody>
+    </table>
+
+    <div class="text-right">
+        <h4>Tổng tiền: @tongTien.ToString("N0")</h4>
+        <a href="@Url.Action("Checkout", "Cart")" class="btn btn-primary">Thanh toán</a>
+    </div>
+</div>
