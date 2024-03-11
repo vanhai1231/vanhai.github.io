@@ -13,6 +13,7 @@
     <img class="banner" src="@Url.Content("~/Content/images/banner2.png")" alt="Banner quảng cáo" />
     <img class="banner" src="@Url.Content("~/Content/images/banner3.png")" alt="Banner quảng cáo" />
     <img class="banner" src="@Url.Content("~/Content/images/banner4.png")" alt="Banner quảng cáo" />
+
 </div>
 <div class="row">
     @foreach (var item in firstSixProducts)
@@ -24,7 +25,8 @@
                     <div class="card-body">
                         <h5 class="card-title">@Html.DisplayFor(modelItem => item.Tensp)</h5>
                         <p class="card-text">Giá: @item.Gia.ToString("N0")</p>
-                        <a href="@Url.Action("AddToCart", "Cart", new { id = item.id })" class="btn btn-primary">Mua ngay</a>
+                        <a href="#" class="btn btn-primary" data-product-id="@item.id">Mua ngay</a>
+                        <!-- <a href="Url.Action("AddToCart", "Cart", new { id = item.id })" class="btn btn-primary">Mua ngay</a> -->
                         <a href="@Url.Action("Detail", "SanPham", new { id = item.id })" class="btn btn-secondary">Xem chi tiết</a>
                     </div>
                 </div>
@@ -62,7 +64,7 @@
                         <div class="card-body">
                             <h5 class="card-title">@Html.DisplayFor(modelItem => item.Tensp)</h5>
                             <p class="card-text">Giá: @item.Gia.ToString("N0")</p>
-                            <a href="@Url.Action("AddToCart", "Cart", new { id = item.id })" class="btn btn-primary">Mua ngay</a>
+                            <a href="#" class="btn btn-primary" data-product-id="@item.id">Mua ngay</a>
                             <a href="@Url.Action("Detail", "SanPham", new { id = item.id })" class="btn btn-secondary">Xem chi tiết</a>
                         </div>
                     </div>
@@ -88,5 +90,35 @@
     });
 </script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+<script>
+    $(".btn-primary").click(function (e) {
+        e.preventDefault();
+        var productId = $(this).data('product-id');
+        if (productId !== undefined && productId !== null) {
+            addToCart(productId);
+        } else {
+            console.log("productId không hợp lệ");
+        }
+    });
+
+    toastr.options.positionClass = 'toast-bottom-right'
+
+    function addToCart(productId) {
+        $.ajax({
+            url: '@Url.Action("AddToCart", "Cart")',
+            type: 'POST',
+            data: { id: productId },
+            success: function () {
+                toastr.success('Sản phẩm đã được thêm vào giỏ hàng');
+            },
+            error: function (xhr, status, error) {
+                toastr.error('Có lỗi xảy ra. Vui lòng thử lại sau. ' + xhr.responseText);
+            }
+        });
+}
+</script>
 
 

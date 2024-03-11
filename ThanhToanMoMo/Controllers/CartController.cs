@@ -53,6 +53,13 @@ namespace ThanhToanMoMo.Controllers
 
         public ActionResult AddToCart(int id)
         {
+            // Kiểm tra xem id có giá trị hợp lệ không
+            if (id <= 0)
+            {
+                // Nếu id không hợp lệ, chuyển hướng trở lại trang chủ hoặc trang cần thiết
+                return RedirectToAction("Index", "Home");
+            }
+
             // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
             var existingCartItem = Data.ChiTietGioHangs.FirstOrDefault(c => c.id == id);
 

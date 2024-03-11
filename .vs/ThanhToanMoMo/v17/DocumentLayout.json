@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\PC\\source\\repos\\ThanhToanMoMo\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{64282274-8586-4433-8B04-C2369A7B640E}|ThanhToanMoMo\\ThanhToanMoMo.csproj|C:\\Users\\PC\\source\\repos\\ThanhToanMoMo\\thanhtoanmomo\\views\\cart\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{64282274-8586-4433-8B04-C2369A7B640E}|ThanhToanMoMo\\ThanhToanMoMo.csproj|solutionrelative:thanhtoanmomo\\views\\cart\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{64282274-8586-4433-8B04-C2369A7B640E}|ThanhToanMoMo\\ThanhToanMoMo.csproj|C:\\Users\\PC\\source\\repos\\ThanhToanMoMo\\thanhtoanmomo\\views\\sanpham\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{64282274-8586-4433-8B04-C2369A7B640E}|ThanhToanMoMo\\ThanhToanMoMo.csproj|solutionrelative:thanhtoanmomo\\views\\sanpham\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{64282274-8586-4433-8B04-C2369A7B640E}|ThanhToanMoMo\\ThanhToanMoMo.csproj|C:\\Users\\PC\\source\\repos\\ThanhToanMoMo\\thanhtoanmomo\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{64282274-8586-4433-8B04-C2369A7B640E}|ThanhToanMoMo\\ThanhToanMoMo.csproj|solutionrelative:thanhtoanmomo\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{64282274-8586-4433-8B04-C2369A7B640E}|ThanhToanMoMo\\ThanhToanMoMo.csproj|c:\\users\\pc\\source\\repos\\thanhtoanmomo\\thanhtoanmomo\\views\\sanpham\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{64282274-8586-4433-8B04-C2369A7B640E}|ThanhToanMoMo\\ThanhToanMoMo.csproj|solutionrelative:thanhtoanmomo\\views\\sanpham\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{64282274-8586-4433-8B04-C2369A7B640E}|ThanhToanMoMo\\ThanhToanMoMo.csproj|c:\\users\\pc\\source\\repos\\thanhtoanmomo\\thanhtoanmomo\\views\\cart\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{64282274-8586-4433-8B04-C2369A7B640E}|ThanhToanMoMo\\ThanhToanMoMo.csproj|solutionrelative:thanhtoanmomo\\views\\cart\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{64282274-8586-4433-8B04-C2369A7B640E}|ThanhToanMoMo\\ThanhToanMoMo.csproj|C:\\Users\\PC\\source\\repos\\ThanhToanMoMo\\thanhtoanmomo\\views\\sanpham\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -30,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -68,27 +68,27 @@
               "RelativeDocumentMoniker": "ThanhToanMoMo\\Controllers\\CartController.cs",
               "ToolTip": "C:\\Users\\PC\\source\\repos\\ThanhToanMoMo\\ThanhToanMoMo\\Controllers\\CartController.cs",
               "RelativeToolTip": "ThanhToanMoMo\\Controllers\\CartController.cs",
-              "ViewState": "AQIAAGgAAAAAAAAAAAAYwH4AAAAAAAAA",
+              "ViewState": "AQIAADEAAAAAAAAAAAAuwGsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-11T03:22:11.89Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\ThanhToanMoMo\\ThanhToanMoMo\\Views\\SanPham\\Index.cshtml",
               "RelativeDocumentMoniker": "ThanhToanMoMo\\Views\\SanPham\\Index.cshtml",
               "ToolTip": "C:\\Users\\PC\\source\\repos\\ThanhToanMoMo\\ThanhToanMoMo\\Views\\SanPham\\Index.cshtml",
               "RelativeToolTip": "ThanhToanMoMo\\Views\\SanPham\\Index.cshtml",
-              "ViewState": "AQIAAD4AAAAAAAAAAAAwwFAAAAAAAAAA",
+              "ViewState": "AQIAAFoAAAAAAAAAAAAwwGwAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-03-10T08:03:49.732Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\ThanhToanMoMo\\ThanhToanMoMo\\Views\\Cart\\Index.cshtml",
               "RelativeDocumentMoniker": "ThanhToanMoMo\\Views\\Cart\\Index.cshtml",
