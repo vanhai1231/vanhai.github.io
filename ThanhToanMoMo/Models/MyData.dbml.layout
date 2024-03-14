@@ -2,36 +2,36 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="MyData">
   <DataContextMoniker Name="/MyDataDataContext" />
   <nestedChildShapes>
-    <classShape Id="d00cc05a-940d-4d26-8879-1637ff6175ff" absoluteBounds="0.75, 0.625, 2, 1.1939925130208333">
+    <classShape Id="0380a0b9-7520-4732-b997-8d0cef452c2d" absoluteBounds="1.5, 1.375, 2, 1.1939925130208333">
       <DataClassMoniker Name="/MyDataDataContext/ChiTietGioHang" />
       <nestedChildShapes>
-        <elementListCompartment Id="b07db456-2327-4945-94d3-ef125a530778" absoluteBounds="0.76500000000000012, 1.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="a0ceb4ec-914e-4cf5-8a18-f9571614d0c0" absoluteBounds="1.5150000000000001, 1.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="b8c5da46-b0fa-491f-8f74-f843885c597e" absoluteBounds="1.625, 3.125, 2, 1.5785953776041666">
-      <DataClassMoniker Name="/MyDataDataContext/SanPham" />
-      <nestedChildShapes>
-        <elementListCompartment Id="cd2e6390-e856-41a7-8356-784845172a21" absoluteBounds="1.6400000000000001, 3.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(2.1875 : 3.125); (2.1875 : 1.81899251302083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/MyDataDataContext/SanPham/SanPham_ChiTietGioHang" />
-      <nodes>
-        <classShapeMoniker Id="b8c5da46-b0fa-491f-8f74-f843885c597e" />
-        <classShapeMoniker Id="d00cc05a-940d-4d26-8879-1637ff6175ff" />
-      </nodes>
-    </associationConnector>
-    <classShape Id="85ea5d98-8086-4703-957f-2f444cd1f2c2" absoluteBounds="4.375, 1.375, 2, 1.3862939453125">
+    <classShape Id="4bf068fe-276a-4b43-bccc-7e4c5cd87e7d" absoluteBounds="2.125, 3.25, 2, 1.3862939453125">
       <DataClassMoniker Name="/MyDataDataContext/GioHang" />
       <nestedChildShapes>
-        <elementListCompartment Id="12c7d690-ea1c-493f-9abb-882b590de8c1" absoluteBounds="4.39, 1.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="8670c459-dc3e-41bf-a757-1f18c2fed4ac" absoluteBounds="2.14, 3.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(4.375 : 1.59699625651042); (2.75 : 1.59699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.8125 : 3.25); (2.8125 : 2.56899251302083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/MyDataDataContext/GioHang/GioHang_ChiTietGioHang" />
       <nodes>
-        <classShapeMoniker Id="85ea5d98-8086-4703-957f-2f444cd1f2c2" />
-        <classShapeMoniker Id="d00cc05a-940d-4d26-8879-1637ff6175ff" />
+        <classShapeMoniker Id="4bf068fe-276a-4b43-bccc-7e4c5cd87e7d" />
+        <classShapeMoniker Id="0380a0b9-7520-4732-b997-8d0cef452c2d" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="ee0414c3-a451-409d-ba7c-e5c46cd2ed9c" absoluteBounds="2.625, 0.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/MyDataDataContext/SanPham" />
+      <nestedChildShapes>
+        <elementListCompartment Id="71e1d5fa-83ff-40cf-8843-30028ccb304d" absoluteBounds="2.64, 1.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.625 : 1.53929768880208); (1.25 : 1.53929768880208); (1.25 : 1.97199625651042); (1.5 : 1.97199625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MyDataDataContext/SanPham/SanPham_ChiTietGioHang" />
+      <nodes>
+        <classShapeMoniker Id="ee0414c3-a451-409d-ba7c-e5c46cd2ed9c" />
+        <classShapeMoniker Id="0380a0b9-7520-4732-b997-8d0cef452c2d" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

@@ -35,20 +35,33 @@
     }
 </div>
 
+<style>
+    /* CSS cho hình ảnh khi di chuột vào */
+    .uudai-img {
+        transition: transform 0.3s ease; /* Hiệu ứng chuyển đổi mượt mà */
+    }
+
+        .uudai-img:hover {
+            transform: scale(1.1); /* Phóng to 110% khi di chuột vào */
+        }
+</style>
+
+
 <div class="container mt-5">
     <h2>ƯU ĐÃI KHI THANH TOÁN ONLINE</h2>
     <div class="row">
         <div class="col-md-4">
-            <img src="@Url.Content("~/Content/images/uudai1.png")" class="img-fluid" alt="Ưu đãi 1" />
+            <img src="@Url.Content("~/Content/images/uudai1.png")" class="img-fluid uudai-img" alt="Ưu đãi 1" />
         </div>
         <div class="col-md-4">
-            <img src="@Url.Content("~/Content/images/uudai2.png")" class="img-fluid" alt="Ưu đãi 2" />
+            <img src="@Url.Content("~/Content/images/uudai2.png")" class="img-fluid uudai-img" alt="Ưu đãi 2" />
         </div>
         <div class="col-md-4">
-            <img src="@Url.Content("~/Content/images/uudai3.png")" class="img-fluid" alt="Ưu đãi 3" />
+            <img src="@Url.Content("~/Content/images/uudai3.png")" class="img-fluid uudai-img" alt="Ưu đãi 3" />
         </div>
     </div>
 </div>
+
 
 <div class="container mt-5">
     <h2>Gợi ý hôm nay</h2>
@@ -119,6 +132,19 @@
             }
         });
 }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $(".uudai-img").hover(
+            function () {
+                $(this).css("transform", "scale(1.1)"); // Phóng to 110% khi di chuột vào
+            },
+            function () {
+                $(this).css("transform", "scale(1)"); // Trở về kích thước ban đầu khi di chuột ra
+            }
+        );
+    });
 </script>
 
 

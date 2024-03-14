@@ -23,7 +23,8 @@
             <tbody>
                 @{
                     int stt = 1;
-                    decimal tongTien = 0;
+                    int tongTien = 0;
+
                     MyDataDataContext Data = new MyDataDataContext();
                     var chiTietDonHang = Data.ChiTietGioHangs.ToList(); // Lấy tất cả các sản phẩm từ ChiTietGioHang
                 }
@@ -46,15 +47,17 @@
                             </td>
                         </tr>
                         stt++;
-                        tongTien += (decimal)cart.ThanhTien;
+                        tongTien += cart.ThanhTien;
                     }
                 }
+
             </tbody>
         </table>
     </div>
 
     <div class="text-right">
         <h4 class="my-4">Tổng tiền: <span class="text-primary">@tongTien.ToString("N0")</span></h4>
-        <a href="@Url.Action("Checkout", "Cart")" class="btn btn-primary btn-lg">Thanh toán</a>
+        <a href="@Url.Action("Payment", "Cart", new { tongTien = tongTien })" class="btn btn-primary btn-lg">Thanh toán</a>
+
     </div>
 </div>

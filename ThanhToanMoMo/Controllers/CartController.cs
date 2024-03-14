@@ -1,15 +1,19 @@
-﻿using System;
+﻿using MoMo;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ThanhToanMoMo.Models;
+using ThanhToanMoMo.Others;
 
 namespace ThanhToanMoMo.Controllers
 {
     public class CartController : Controller
     {
         MyDataDataContext Data = new MyDataDataContext();
+        
         public ActionResult Index()
         {
             // Đặt mã giỏ hàng mặc định là 0
@@ -20,6 +24,8 @@ namespace ThanhToanMoMo.Controllers
 
             // Tạo một danh sách để chứa thông tin chi tiết của các sản phẩm trong giỏ hàng
             var cartDetails = new List<CartItemDetail>();
+
+            int tongTien = 0; // Tổng tiền
 
             foreach (var item in cartItems)
             {
@@ -37,17 +43,21 @@ namespace ThanhToanMoMo.Controllers
                         id = item.id,
                         MaGioHang = item.MaGioHang,
                         TenSanPham = product.Tensp,
-                        Gia = (decimal)product.Gia,
+                        Gia = product.Gia,
                         HinhAnh = product.HinhAnh,
                         SoLuong = cart.SoLuong,
-                        ThanhTien = (decimal)cart.ThanhTien
+                        ThanhTien = cart.ThanhTien
                     });
+
+                    // Tính tổng tiền
+                    tongTien += cart.ThanhTien;
                 }
             }
 
             // Trả về View với danh sách chi tiết giỏ hàng
             return View(cartDetails);
         }
+
 
         private static int currentCartId = 0;
 
@@ -130,6 +140,60 @@ namespace ThanhToanMoMo.Controllers
                 }
             }
             return RedirectToAction("Index", "Cart");
+        }
+        public ActionResult Payment(int tongTien)
+        {
+            //request params need to request to MoMo system
+            string endpoint = "https://test-payment.momo.vn/gw_payment/transactionProcessor";
+            string partnerCode = "MOMOOJOI20210710";
+            string accessKey = "iPXneGmrJH0G8FOP";
+            string serectkey = "sFcbSGRSJjwGxwhhcEktCHWYUuTuPNDB";
+            string orderInfo = "Thanh toán online";
+            string returnUrl = "https://localhost:44336";
+            string notifyurl = "https://4c8d-2001-ee0-5045-50-58c1-b2ec-3123-740d.ap.ngrok.io/Home/SavePayment"; //lưu ý: notifyurl không được sử dụng localhost, có thể sử dụng ngrok để public localhost trong quá trình test
+
+            string amount = tongTien.ToString();
+            string orderid = DateTime.Now.Ticks.ToString(); //mã đơn hàng
+            string requestId = DateTime.Now.Ticks.ToString();
+            string extraData = "";
+
+            //Before sign HMAC SHA256 signature
+            string rawHash = "partnerCode=" +
+                partnerCode + "&accessKey=" +
+                accessKey + "&requestId=" +
+                requestId + "&amount=" +
+                amount + "&orderId=" +
+                orderid + "&orderInfo=" +
+                orderInfo + "&returnUrl=" +
+                returnUrl + "&notifyUrl=" +
+                notifyurl + "&extraData=" +
+                extraData;
+
+            MoMoSecurity crypto = new MoMoSecurity();
+            //sign signature SHA256
+            string signature = crypto.signSHA256(rawHash, serectkey);
+
+            //build body json request
+            JObject message = new JObject
+            {
+                { "partnerCode", partnerCode },
+                { "accessKey", accessKey },
+                { "requestId", requestId },
+                { "amount",amount},
+                { "orderId", orderid },
+                { "orderInfo", orderInfo },
+                { "returnUrl", returnUrl },
+                { "notifyUrl", notifyurl },
+                { "extraData", extraData },
+                { "requestType", "captureMoMoWallet" },
+                { "signature", signature }
+            };
+
+            string responseFromMomo = PaymentRequest.sendPaymentRequest(endpoint, message.ToString());
+
+            JObject jmessage = JObject.Parse(responseFromMomo);
+
+            return Redirect(jmessage.GetValue("payUrl").ToString());
         }
 
     }
