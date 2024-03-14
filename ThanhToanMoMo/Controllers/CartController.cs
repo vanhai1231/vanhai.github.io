@@ -58,9 +58,6 @@ namespace ThanhToanMoMo.Controllers
             return View(cartDetails);
         }
 
-
-        private static int currentCartId = 0;
-
         public ActionResult AddToCart(int id)
         {
             // Kiểm tra xem id có giá trị hợp lệ không
@@ -143,21 +140,19 @@ namespace ThanhToanMoMo.Controllers
         }
         public ActionResult Payment(int tongTien)
         {
-            //request params need to request to MoMo system
+            //thông số yêu cầu cần gửi tới hệ thống MoMo
             string endpoint = "https://test-payment.momo.vn/gw_payment/transactionProcessor";
             string partnerCode = "MOMOOJOI20210710";
             string accessKey = "iPXneGmrJH0G8FOP";
             string serectkey = "sFcbSGRSJjwGxwhhcEktCHWYUuTuPNDB";
             string orderInfo = "Thanh toán online";
             string returnUrl = "https://localhost:44336";
-            string notifyurl = "https://4c8d-2001-ee0-5045-50-58c1-b2ec-3123-740d.ap.ngrok.io/Home/SavePayment"; //lưu ý: notifyurl không được sử dụng localhost, có thể sử dụng ngrok để public localhost trong quá trình test
-
+            string notifyurl = "https://Home/SavePayment"; // Địa chỉ URL mà MoMo sẽ gửi kết quả thanh toán đến. 
             string amount = tongTien.ToString();
             string orderid = DateTime.Now.Ticks.ToString(); //mã đơn hàng
             string requestId = DateTime.Now.Ticks.ToString();
             string extraData = "";
 
-            //Before sign HMAC SHA256 signature
             string rawHash = "partnerCode=" +
                 partnerCode + "&accessKey=" +
                 accessKey + "&requestId=" +
@@ -170,7 +165,6 @@ namespace ThanhToanMoMo.Controllers
                 extraData;
 
             MoMoSecurity crypto = new MoMoSecurity();
-            //sign signature SHA256
             string signature = crypto.signSHA256(rawHash, serectkey);
 
             //build body json request
@@ -179,7 +173,7 @@ namespace ThanhToanMoMo.Controllers
                 { "partnerCode", partnerCode },
                 { "accessKey", accessKey },
                 { "requestId", requestId },
-                { "amount",amount},
+                { "amount",amount },
                 { "orderId", orderid },
                 { "orderInfo", orderInfo },
                 { "returnUrl", returnUrl },
@@ -188,11 +182,8 @@ namespace ThanhToanMoMo.Controllers
                 { "requestType", "captureMoMoWallet" },
                 { "signature", signature }
             };
-
             string responseFromMomo = PaymentRequest.sendPaymentRequest(endpoint, message.ToString());
-
             JObject jmessage = JObject.Parse(responseFromMomo);
-
             return Redirect(jmessage.GetValue("payUrl").ToString());
         }
 
